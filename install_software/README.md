@@ -1,6 +1,6 @@
 # install_software
 
-TODO: Enter the cookbook description here.
+# This recipe is can be used to install 7-zip, JDK & Maven on windows servers.
 
 #To Install 7-Zip 
 
