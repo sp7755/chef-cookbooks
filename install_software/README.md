@@ -1,6 +1,5 @@
 # install_software
-
-# This recipe is can be used to install 7-zip, JDK & Maven on windows servers.
+# This recipe can be used to install 7-zip, JDK & Maven on windows servers.
 
 #To Install 7-Zip 
 
