@@ -1,0 +1,124 @@
+
+C:\Windows\system32>chef-client
+Starting Chef Infra Client, version 15.10.12
+resolving cookbooks for run list: ["install_software"]
+Synchronizing Cookbooks:
+  - install_software (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Converging 2 resources
+Recipe: install_software::default
+  * windows_package[7-Zip 19.00 (x64 edition)] action install
+  Recipe: <Dynamically Defined Resource>
+    * remote_file[c:\chef\cache\package\7z1900-x64.msi] action create
+      - create new file c:\chef\cache\package\7z1900-x64.msi
+      - update content in file c:\chef\cache\package\7z1900-x64.msi from none to a78032
+      (new content is binary, diff output suppressed)
+    - install version 19.00.00.0 of package 7-Zip 19.00 (x64 edition)
+Recipe: install_software::default
+  * windows_path[C:\7-zip] action add
+    * windows_env[path] action modify
+
+
+
+Running handlers:
+Running handlers complete
+Chef Infra Client finished, 4/4 resources updated in 21 seconds
+
+C:\Windows\system32>
+
+
+
+=====
+
+
+C:\Windows\system32>chef-client
+Starting Chef Infra Client, version 15.10.12
+resolving cookbooks for run list: ["install_software::java"]
+Synchronizing Cookbooks:
+  - install_software (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Converging 6 resources
+Recipe: install_software::java
+  * directory[C:\software] action create
+    - create new directory C:\software
+  * remote_file[C:\software\jdk-8u251-windows-x64.zip] action create
+     - Progress: 0%
+     - Progress: 10%
+     - Progress: 20%
+     - Progress: 30%
+     - Progress: 40%
+     - Progress: 50%
+     - Progress: 60%
+     - Progress: 70%
+     - Progress: 80%
+     - Progress: 90%
+     - Progress: 100%
+    - create new file C:\software\jdk-8u251-windows-x64.zip
+    - update content in file C:\software\jdk-8u251-windows-x64.zip from none to df07c7
+    (file sizes exceed 10000000 bytes, diff output suppressed)
+  * extraction[software extraction] action extract
+    * execute[extract software] action run
+      - execute               "C:\7-zip\"7z.exe x jdk-8u251-windows-x64.zip -y
+
+
+  * execute[Install JDK] action run
+    - execute "C:\software\jdk-8u251-windows-x64.exe" /s ADDLOCAL="ToolsFeature,PublicjreFeature" INSTALLDIR="C:\Program Files\Java\jdk" /INSTALLDIRPUBJRE="C:\Program Files\Java\jre"
+  * windows_env[Set JDK Home PATH] action modify
+
+  * windows_env[Set JAVA Home] action create
+
+
+Running handlers:
+Running handlers complete
+Chef Infra Client finished, 7/7 resources updated in 16 minutes 49 seconds
+
+C:\Windows\system32>
+
+======
+
+C:\Windows\system32>chef-client
+Starting Chef Infra Client, version 15.10.12
+resolving cookbooks for run list: ["install_software::maven"]
+Synchronizing Cookbooks:
+  - install_software (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Converging 6 resources
+Recipe: install_software::maven
+  * directory[C:\software] action create (up to date)
+  * remote_file[C:\Program Files\apache-maven-3.6.3-bin.zip] action create
+     - Progress: 0%
+     - Progress: 10%
+     - Progress: 20%
+     - Progress: 30%
+     - Progress: 40%
+     - Progress: 50%
+     - Progress: 60%
+     - Progress: 70%
+     - Progress: 80%
+     - Progress: 90%
+     - Progress: 100%
+    - create new file C:\Program Files\apache-maven-3.6.3-bin.zip
+    - update content in file C:\Program Files\apache-maven-3.6.3-bin.zip from none to 444522
+    (new content is binary, diff output suppressed)
+  * extraction[software extraction] action extract
+    * execute[extract software] action run
+      - execute               "C:\7-zip\"7z.exe x apache-maven-3.6.3-bin.zip -y
+
+
+  * windows_env[Set Maven Home PATH] action modify
+
+  * windows_env[Set Maven Home] action create
+
+  * windows_env[Set Maven Home] action create
+
+
+Running handlers:
+Running handlers complete
+Chef Infra Client finished, 6/7 resources updated in 28 seconds
+
+C:\Windows\system32>
+
+
